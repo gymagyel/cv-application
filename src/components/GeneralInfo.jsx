@@ -50,14 +50,15 @@ onChange={(event) =>
         <button type="submit">Submit</button>
       </form>
        ) : (
-      <div>
-        <p>Name: {formData.name}</p>
-        <p>Email: {formData.email}</p>
-        <p>Phone: {formData.phone}</p>
-        <button type="button" onClick={() => setIsEditing(true)}>
-          Edit
-        </button>
-      </div>
+      <div className="cv-preview">
+  <h3>{formData.name}</h3>
+  <p>{formData.email}</p>
+  <p>{formData.phone}</p>
+
+  <button type="button" onClick={() => setIsEditing(true)}>
+    Edit
+  </button>
+</div>
     )}
     </section>
   );

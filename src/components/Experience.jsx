@@ -18,6 +18,19 @@ function handleSubmit(event) {
 
 
 }  
+
+
+function formatDate(date) {
+  if (!date) return '';
+
+  const [year, month] = date.split('-');
+
+  return new Date(year, month - 1).toLocaleDateString('en-IE', {
+    month: 'short',
+    year: 'numeric',
+  });
+}
+
 return (
     <section>
       <h2>Practical Experience</h2>
@@ -45,6 +58,7 @@ return (
         <label>
             Main responsibilities:
         <textarea
+        rows={4}
         value={formData.responsibility}
         onChange={(event) =>
             setFormData({ ...formData, responsibility: event.target.value})
@@ -54,7 +68,7 @@ return (
              <label>
   Start date:
   <input
-  type='date'
+  type='month'
     value={formData.start}
     onChange={(event) =>
       setFormData({ ...formData, start: event.target.value })
@@ -64,7 +78,7 @@ return (
      <label>
   End date
   <input
-  type='date'
+  type='month'
     value={formData.end}
     onChange={(event) =>
       setFormData({ ...formData, end: event.target.value })
@@ -76,11 +90,23 @@ return (
       </form>
     ) : (
       <div>
-        <p>Company: {formData.companyName}</p>
+        <h3>Company: {formData.companyName}</h3>
         <p>Position: {formData.position}</p>
-        <p>Responsibilities: {formData.responsibility}</p>
-        <p>Start date: {formData.start}</p>
-        <p>End date: {formData.end}</p>
+<p className="responsibilities-heading">
+  Key Responsibilities
+</p>
+        
+        <div className="cv-preview">
+        <ul>
+  {formData.responsibility
+    .split('\n')
+    .filter((item) => item.trim() !== '')
+    .map((item, index) => (
+      <li key={index}>{item}</li>
+    ))}
+</ul></div>
+        <p>Start date: {formatDate(formData.start)}</p>
+<p>End date: {formatDate(formData.end)}</p>
 
         <button type="button" onClick={() => setIsEditing(true)}>
           Edit

@@ -23,7 +23,7 @@ function handleSubmit(event) {
         <label>
   School:
   <input
-  type='date'
+  
     value={formData.school}
     onChange={(event) =>
       setFormData({ ...formData, school: event.target.value })
@@ -45,6 +45,10 @@ function handleSubmit(event) {
         <label>
             Date:
             <input
+            type='number'
+            min= '1950'
+            max= '2100'
+            placeholder = 'YYYY'
             value={formData.date}
             onChange={(event)=>
                 setFormData({ ...formData, date: event.target.value})
@@ -55,7 +59,7 @@ function handleSubmit(event) {
       </form>
     ) : (
       <div>
-        <p>School: {formData.school}</p>
+        <h3>School: {formData.school}</h3>
         <p>Title of study: {formData.title}</p>
         <p>Date: {formData.date}</p>
 
