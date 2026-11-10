@@ -58,15 +58,15 @@ function handleSubmit(event) {
         <button type="submit">Submit</button>
       </form>
     ) : (
-      <div>
-        <h3>School: {formData.school}</h3>
-        <p>Title of study: {formData.title}</p>
-        <p>Date: {formData.date}</p>
+      <div className="cv-preview">
+  <h3>{formData.school}</h3>
+  <p>{formData.title}</p>
+  <p>{formData.date}</p>
 
-        <button type="button" onClick={() => setIsEditing(true)}>
-          Edit
-        </button>
-      </div>
+  <button type="button" onClick={() => setIsEditing(true)}>
+    Edit
+  </button>
+</div>
     )}
 
     </section>

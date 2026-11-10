@@ -6,10 +6,20 @@ import Experience from './components/Experience';
 function App() {
   return (
     <main>
+      
       <h1>My CV</h1>
       <GeneralInfo />
       <Education />
       <Experience/>
+      <div className="print-container">
+  <button
+    type="button"
+    className="print-button"
+    onClick={() => window.print()}
+  >
+    Print CV
+  </button>
+</div>
     </main>
   );
 }
