@@ -51,6 +51,7 @@ onChange={(event) =>
       </form>
        ) : (
       <div className="cv-preview">
+        <div className="cv-preview general-preview"></div>
   <h3>{formData.name}</h3>
   <p>{formData.email}</p>
   <p>{formData.phone}</p>

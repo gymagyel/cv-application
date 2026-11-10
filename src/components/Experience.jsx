@@ -20,16 +20,6 @@ function handleSubmit(event) {
 }  
 
 
-function formatDate(date) {
-  if (!date) return '';
-
-  const [year, month] = date.split('-');
-
-  return new Date(year, month - 1).toLocaleDateString('en-IE', {
-    month: 'short',
-    year: 'numeric',
-  });
-}
 
 return (
     <section>
@@ -68,7 +58,10 @@ return (
              <label>
   Start date:
   <input
-  type='month'
+  type='number'
+            min= '1950'
+            max= '2100'
+            placeholder = 'YYYY'
     value={formData.start}
     onChange={(event) =>
       setFormData({ ...formData, start: event.target.value })
@@ -78,7 +71,10 @@ return (
      <label>
   End date
   <input
-  type='month'
+  type='number'
+            min= '1950'
+            max= '2100'
+            placeholder = 'YYYY'
     value={formData.end}
     onChange={(event) =>
       setFormData({ ...formData, end: event.target.value })
@@ -89,8 +85,9 @@ return (
 <button type="submit">Submit</button>
       </form>
     ) : (
-      <div>
-        <h3>Company: {formData.companyName}</h3>
+        
+      <div className="cv-preview">
+        <h3>{formData.companyName}</h3>
         <p>Position: {formData.position}</p>
 <p className="responsibilities-heading">
   Key Responsibilities
@@ -105,8 +102,9 @@ return (
       <li key={index}>{item}</li>
     ))}
 </ul></div>
-        <p>Start date: {formatDate(formData.start)}</p>
-<p>End date: {formatDate(formData.end)}</p>
+        <p>
+  {formData.start} – {formData.end || 'Present'}
+</p>
 
         <button type="button" onClick={() => setIsEditing(true)}>
           Edit
